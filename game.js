@@ -157,8 +157,8 @@ getNewQuestion = () => {
     progressText.innerText = `Question ${questionCounter}/${MAX_QUESTIONS}`;
 
     // Select a random question from the available questions
-    const questionIndex = Math.floor(Math.random() * availableQuestions.length);
-    currentQuestion = availableQuestions[questionIndex];
+    const randomIndex = Math.floor(Math.random() * availableQuestions.length);
+    currentQuestion = availableQuestions[randomIndex];
     question.innerText = currentQuestion.question;
 
     choices.forEach(choice => {
@@ -166,7 +166,7 @@ getNewQuestion = () => {
         choice.innerText = currentQuestion['choice' + number];
     });
 
-    availableQuestions.splice(questionIndex, 1);
+    availableQuestions.splice(randomIndex, 1);
 
     acceptingAnswers = true;
 
