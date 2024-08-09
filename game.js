@@ -171,16 +171,16 @@ getNewQuestion = () => {
     acceptingAnswers = true;
 
     // Start the timer for the current question
-    let time = MAX_TIME;
-    timerText.innerText = `Time: ${time}`;
-    timer = setInterval(() => {
-        time--;
-        timerText.innerText = `Time: ${time}`;
-        if (time <= 0) {
-            clearInterval(timer);
-            getNewQuestion();
-        }
-    }, 1000);
+    // let time = MAX_TIME;
+    // timerText.innerText = `Time: ${time}`;
+    // timer = setInterval(() => {
+    //     time--;
+    //     timerText.innerText = `Time: ${time}`;
+    //     if (time <= 0) {
+    //         clearInterval(timer);
+    //         getNewQuestion();
+    //     }
+    // }, 1000);
 };
 
 choices.forEach(choice => {
@@ -188,8 +188,8 @@ choices.forEach(choice => {
         if (!acceptingAnswers) return;
 
         acceptingAnswers = false;
-
-        const selectedAnswer = e.target.dataset['number']
+        const selectedChoice = e.target;
+        const selectedAnswer = selectedChoice.dataset['number'];
 
         const classToApply = 
             selectedAnswer == currentQuestion.answer ? 'correct' : 'incorrect';
