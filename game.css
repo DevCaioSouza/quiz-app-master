@@ -1,4 +1,4 @@
-.choice-container{
+.choice-container {
     display: flex;
     margin-bottom: 0.5rem;
     width: 100%;
@@ -20,7 +20,33 @@
     color: white;
 }
 
-.choice-text{
+.choice-text {
     padding: 1.5rem;
     width: 100%;
+}
+
+/* GREEN FOR CORRECT, RED FOR INCORRECT */
+.correct {
+    background-color: green;
+}
+
+.incorrect {
+    background-color: red;
+}
+
+.round-time-bar {
+    margin: 1rem;
+    overflow: hidden;
+    height: 2rem;
+    animation: roundtime calc(var(--duration) * 1s) steps(var(--duration)) forwards;
+    transform-origin: left center;
+    background: linear-gradient(to bottom, red, #900);
+}
+
+
+@keyframes roundtime {
+    to {
+        /* More performant than `width` */
+        transform: scaleX(0);
+    }
 }
