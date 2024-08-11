@@ -10,3 +10,4 @@ ainda precisa de algumas features
 ## Bugs a corrigir
  
 - Se estivermos no game e reiniciarmos o app, ele precisa voltar pra página inicial, porém está retornando à seção /game
+- Final score está sempre dando em 10, precisa corrigir isso
