@@ -174,16 +174,16 @@ getNewQuestion = () => {
 
   let time = MAX_TIME
   timerText.innerText = `Tempo restante: ${time}`
-  timer = setInterval(() => {
-    time--
-    timerText.innerText = `Tempo restante: ${time}`
-    if (time <= 0) {
-      console.log(timerBar)
-      clearInterval(timer)
-      timerBar.remove
-      getNewQuestion()
-    }
-  }, 1000)
+  // timer = setInterval(() => {
+  //   time--
+  //   timerText.innerText = `Tempo restante: ${time}`
+  //   if (time <= 0) {
+  //     console.log(timerBar)
+  //     clearInterval(timer)
+  //     timerBar.remove
+  //     getNewQuestion()
+  //   }
+  // }, 1000)
 
   barTimeout = setTimeout(() => {
     timerBar.classList.remove('round-time-bar')
