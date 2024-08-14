@@ -29,7 +29,7 @@ saveScoreForm.addEventListener('submit', e => {
     highScores.push(score);
     // Sort the high scores array in descending order based on score
     highScores.sort((a, b) => b.score - a.score);
-    
+
     // Keep only the max scores
     highScores.splice(MAX_HIGH_SCORES);
 

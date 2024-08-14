@@ -51,17 +51,11 @@
 }
 
 @keyframes roundtime {
-    to {
-        transform: scaleX(0);
-    }
+    to {transform: scaleX(0);}
 
-    0% {
-        background-color: green;
-    }
+    0% {background-color: green;}
 
     /* 66% { background-color: green; }
     67% { background-color: red; } */
-    100% {
-        background-color: red;
-    }
+    100% {background-color: red;}
 }

@@ -9,7 +9,6 @@ let score = 0
 let questionCounter = 0
 let currentQuestion = {}
 let availableQuestions = []
-// let acceptingAnswers = false
 let timer
 
 const MAX_QUESTIONS = 10
@@ -164,14 +163,9 @@ getNewQuestion = () => {
     choicesArr[i].innerText = currentQuestion[`choice${i + 1}`]
   }
 
-  // acceptingAnswers = true
-
   availableQuestions.splice(randomIndex, 1)
 
   progressText.innerText = `Progresso: Questão ${questionCounter} de ${MAX_QUESTIONS}`
-
-  // start timer
-  
 
   let time = MAX_TIME
   timerText.innerText = `Tempo restante: ${time}`
