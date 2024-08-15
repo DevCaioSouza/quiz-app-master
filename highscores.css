@@ -6,7 +6,7 @@ body {
     height: 100vh;
     margin: 0;
     font-family: Arial, sans-serif;
-    background-color: #ecf5ff;
+    background-color: var(--bg-primary);
 }
 
 .center-content {

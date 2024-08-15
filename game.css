@@ -9,14 +9,14 @@
 
 .choice-container:hover {
     cursor: pointer;
-    box-shadow: 0 0.4rem 1.4rem 0 rgba(86, 185, 235, 0.5);
+    box-shadow: var(--box-shadow);
     transform: translateY(-0.1rem);
     transition: transform 150ms;
 }
 
 .choice-prefix {
     padding: 1.5rem 2.5rem;
-    background-color: #56a5eb;
+    background-color: var(--blue);
     color: white;
 }
 
@@ -27,35 +27,30 @@
 
 /* GREEN FOR CORRECT, RED FOR INCORRECT */
 .correct {
-    background-color: green;
+    background-color: var(--green);
 }
 
 .incorrect {
-    background-color: red;
+    background-color: var(--red);
 }
 
 .bar-container {
-    border: 0.1rem solid red;
+    border: 0.1rem solid var(--red);
     border-radius: 1rem;
     margin-top: 1rem;
     height: 4.2rem;
 }
 
-.round-time-bar {
+.timer-countdown {
     margin: 1rem;
-    overflow: hidden;
     height: 2rem;
-    animation: roundtime calc(var(--duration) * 1s) steps(var(--duration)) forwards;
+    animation: barDepletion calc(var(--duration) * 1s) steps(var(--duration));
     transform-origin: left center;
-    /* background: linear-gradient(to bottom, red, #900); */
 }
 
-@keyframes roundtime {
+@keyframes barDepletion {
     to {transform: scaleX(0);}
-
-    0% {background-color: green;}
-
-    /* 66% { background-color: green; }
-    67% { background-color: red; } */
-    100% {background-color: red;}
+    /* mudando as cores */
+    0% {background-color: var(--green);}
+    100% {background-color: var(--red);}
 }

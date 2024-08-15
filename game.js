@@ -141,16 +141,11 @@ startGame = () => {
 }
 
 getNewQuestion = () => {
-  timerBar.classList.add('round-time-bar')
+  timerBar.classList.add('timer-countdown')
 
   clearInterval(timer)
 
-  questionCounter++
-
-  if (questionCounter > MAX_QUESTIONS || availableQuestions.length === 0) {
-    localStorage.setItem('mostRecentScore', score);
-    return window.location.assign('end.html')
-  }
+  questionCounter++  //1°
 
   // pegando a questão e jogando seu enunciado na tela
   const randomIndex = Math.floor(Math.random() * availableQuestions.length)
@@ -159,9 +154,10 @@ getNewQuestion = () => {
 
   console.log(timerBar)
 
-  for (let i = 0; i < choicesArr.length; i++) {
-    choicesArr[i].innerText = currentQuestion[`choice${i + 1}`]
-  }
+  choicesArr.forEach((choice) => {
+    const number = choice.dataset['number']
+    choice.innerText = currentQuestion['choice' + number]
+  })
 
   availableQuestions.splice(randomIndex, 1)
 
@@ -169,27 +165,31 @@ getNewQuestion = () => {
 
   let time = MAX_TIME
   timerText.innerText = `Tempo restante: ${time}`
-  // timer = setInterval(() => {
-  //   time--
-  //   timerText.innerText = `Tempo restante: ${time}`
-  //   if (time <= 0) {
-  //     console.log(timerBar)
-  //     clearInterval(timer)
-  //     timerBar.remove
-  //     getNewQuestion()
-  //   }
-  // }, 1000)
+  timer = setInterval(() => {
+    time--
+    timerText.innerText = `Tempo restante: ${time}`
+    if (time <= 0) {
+      console.log(timerBar)
+      clearInterval(timer)
+      timerBar.remove
+      getNewQuestion()
+    }
+  }, 1000)
 
   barTimeout = setTimeout(() => {
-    timerBar.classList.remove('round-time-bar')
+    timerBar.classList.remove('timer-countdown')
     console.log('Timeout end')
   }, 14900)
-  
+
+  if (questionCounter > MAX_QUESTIONS || availableQuestions.length === 0) {
+    localStorage.setItem('mostRecentScore', score);
+    return window.location.assign('end.html')
+  }
 }
 
 choicesArr.forEach((choice) => {
   choice.addEventListener('click', (e) => {
-    timerBar.classList.remove('round-time-bar')
+    timerBar.classList.remove('timer-countdown')
 
     selectedChoice = e.target
     selectedAnswer = selectedChoice.dataset['number']
@@ -206,7 +206,7 @@ choicesArr.forEach((choice) => {
 
     setTimeout(() => {
       selectedChoice.parentElement.classList.remove(answerValue)
-      timerBar.classList.remove('round-time-bar')
+      timerBar.classList.remove('timer-countdown')
       clearInterval(barTimeout)
       console.log('Timer bar removida')
       getNewQuestion()
